@@ -16,12 +16,22 @@ let currentPlayer = 0; // This is the index of the array of the currentplayer
 //const playerTwo = ...
 //Add both players to the players array
 
+for (let i = 0; i < 2; i++) {
+    players.push(new Player()) 
+}
+
 /**
  * Assignment
  * Make a loop thru all the fields and add a click event. 
  * Connect the addSymbolToField function in the eventHandler
  */
-//for ...
+for (let i = 0; i < fields.length; i++){
+    console.log("for loop")
+    field[i].addEventListener('click', (e) => {
+        addSymbolToField(i);
+        console.log("addevemt")
+    })
+}
 
 /**
  * Assignment 
