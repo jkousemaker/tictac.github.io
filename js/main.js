@@ -17,7 +17,8 @@ let currentPlayer = 0; // This is the index of the array of the currentplayer
 //Add both players to the players array
 
 for (let i = 0; i < 2; i++) {
-    players.push(new Player()) 
+    const newPlayer = new Player(playerName, symbol);
+    players.push(newPlayer);
 }
 
 /**
