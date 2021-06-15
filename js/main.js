@@ -1,5 +1,5 @@
 import Player from "./Player.js";
-
+console.log("js loaded")
 /**
  * To start:
  * Check index.html, make sure the board with fields are created with correct classnames
@@ -7,7 +7,7 @@ import Player from "./Player.js";
  * Add correct classes
  */
 const players = [ ];
-const fields = document.querySelectorAll('.board > .field');
+const fields = document.querySelectorAll('.box');
 const resetButton = document.querySelector(".reset-btn");
 let currentPlayer = 0; // This is the index of the array of the currentplayer
 
@@ -15,10 +15,17 @@ let currentPlayer = 0; // This is the index of the array of the currentplayer
 //const playerOne = ...
 //const playerTwo = ...
 //Add both players to the players array
-
-for (let i = 0; i < 2; i++) {
-    const newPlayer = new Player(playerName, symbol);
-    players.push(newPlayer);
+for (let i = 0; i < 1; i++){
+    document.querySelector(".input-btn").addEventListener('click', (e) => {
+        if(players.length < 2){
+            const newPlayer = new Player(document.getElementById("pname").value, document.getElementById("psymbol").value);
+            players.push(newPlayer);
+            console.log(players.length);
+            changePlayerTurn();
+        } else {
+            console.log("too many players");
+        }
+    })
 }
 
 /**
@@ -28,9 +35,18 @@ for (let i = 0; i < 2; i++) {
  */
 for (let i = 0; i < fields.length; i++){
     console.log("for loop")
-    field[i].addEventListener('click', (e) => {
-        addSymbolToField(i);
-        console.log("addevemt")
+    fields[i].addEventListener('click', (e) => {
+        if(players.length == 2){
+            console.log(i);
+            addSymbolToField(i);
+            if(checkWinner()){
+                resetBoard();
+            }
+            changePlayerTurn();
+            console.log("addevent")
+        } else {
+            alert("You need to add more players!");
+        }
     })
 }
 
@@ -40,28 +56,125 @@ for (let i = 0; i < fields.length; i++){
  */
 resetButton.addEventListener("click", resetGame);
 
-function addSymbolToField(field) {
-    const fieldContent = field.textContent;
-    if (fieldContent === 'X' || fieldContent === 'O') {
+/* fix symbol not showing up*/
+function addSymbolToField(box) {
+    let fieldContent = fields[box].textContent;
+    if (fieldContent === players[0].symbol || fieldContent === players[1].symbol) {
         alert('This field can not be used');
     }
+    console.log(players);
+    if (currentPlayer == 0){
+        fieldContent = players[0].symbol;
+    } else {
+        fieldContent = players[1].symbol;
+    }
+}
 
-    /**
-     * Assignment
-     * Add the current player symbol to the field textContent
-     * What more needs to be done here? Make a short todolist
-     */
+function changePlayerTurn() {
+    currentPlayer++;
+    if(currentPlayer >1) {
+        currentPlayer = 0;
+    }
+}
 
+function resetBoard() {
+    for (let g = 0; g < fields.length; g++){
+        fields[g].textContent = "";
+    }
 }
 
 function checkWinner() {
-    /**
-     * Assignment
-     * Add an algorithm to check if someone has three in a row
-     * Try to use Internet - if not found the teacher will give you one
-     * Also make sure you check for a draw (gelijkspel)
-     * Again what more needs to be done, make a short todolist
-     */
+    if(fields[0].textContent == players[0].symbol && fields[1].textContent == players[0].symbol && fields[2].textContent == players[0].symbol) {
+        alert("Player: " + currentPlayer + " won!"); 
+        addPointsPlayerOne();
+        return true;
+    }
+    else if(fields[3].textContent == players[0].symbol && fields[4].textContent == players[0].symbol && fields[5].textContent == players[0].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerOne()
+        return true;
+    }
+    else if(fields[6].textContent == players[0].symbol && fields[7].textContent == players[0].symbol && fields[8].textContent == players[0].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerOne();
+        return true;
+    }
+    else if(fields[0].textContent == players[0].symbol && fields[3].textContent == players[0].symbol && fields[6].textContent == players[0].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerOne();
+        return true;
+    }
+    else if(fields[1].textContent == players[0].symbol && fields[4].textContent == players[0].symbol && fields[7].textContent == players[0].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerOne();
+        return true;
+    }
+    else if(fields[4].textContent == players[0].symbol && fields[5].textContent == players[0].symbol && fields[8].textContent == players[0].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerOne();
+        return true;
+    }
+    else if(fields[0].textContent == players[0].symbol && fields[4].textContent == players[0].symbol && fields[8].textContent == players[0].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerOne();
+        return true;
+    }
+    else if(fields[2].textContent == players[0].symbol && fields[4].textContent == players[0].symbol && fields[6].textContent == players[0].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerOne();
+        return true;
+    }
+    else if(fields[2].textContent == players[0].symbol && fields[5].textContent == players[0].symbol && fields[8].textContent == players[0].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerOne();
+        return true;
+    }
+    else if(fields[0].textContent == players[1].symbol && fields[1].textContent == players[1].symbol && fields[2].textContent == players[1].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerTwo();
+        return true;
+    }
+    else if(fields[3].textContent == players[1].symbol && fields[4].textContent == players[1].symbol && fields[5].textContent == players[1].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerTwo();
+        return true;
+    }
+    else if(fields[6].textContent == players[1].symbol && fields[7].textContent == players[1].symbol && fields[8].textContent == players[1].symbol) {
+        alert("Player: " + currentPlayer + " won!"); 
+        addPointsPlayerTwo();
+        return true;
+    }
+    else if(fields[0].textContent == players[1].symbol && fields[3].textContent == players[1].symbol && fields[6].textContent == players[1].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerTwo();
+        return true;
+    }
+    else if(fields[1].textContent == players[1].symbol && fields[4].textContent == players[1].symbol && fields[7].textContent == players[1].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerTwo();
+        return true;
+    }
+    else if(fields[4].textContent == players[1].symbol && fields[5].textContent == players[1].symbol && fields[8].textContent == players[1].symbol) {
+        alert("Player: " + currentPlayer + " won!"); 
+        addPointsPlayerTwo();
+        return true;
+    }
+    else if(fields[0].textContent == players[1].symbol && fields[4].textContent == players[1].symbol && fields[8].textContent == players[1].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerTwo();
+        return true;
+    }
+    else if(fields[2].textContent == players[1].symbol && fields[4].textContent == players[1].symbol && fields[6].textContent == players[1].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerTwo();
+        return true;
+    }
+    else if(fields[2].textContent == players[1].symbol && fields[5].textContent == players[1].symbol && fields[8].textContent == players[1].symbol) {
+        alert("Player: " + currentPlayer + " won!");
+        addPointsPlayerTwo();
+        return true;
+    }
+    return false;
 }
 
 function resetGame() {

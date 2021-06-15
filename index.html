@@ -14,23 +14,44 @@
     </header>
     <main>
       <div>
-        <p>Player 1</p>
-        <p>Symbol: X</p>
+        <label for="pname">Player Name:</label>
+        <input type="text" id="pname" name="pname"><br><br>
+        <label for="psymbol">Symbol:   </label>
+        <input type="text" id="psymbol" name="psymbol"><br><br>
+        <button class="input-btn">Submit</button>
       </div>
-      <div class="tic-tac-toe-board board">
-        <div class="box field">X</div>
-        <div class="box field">O</div>
-        <div class="box field">X</div>
-        <div class="box field">O</div>
-        <div class="box field">X</div>
-        <div class="box field">O</div>
-        <div class="box field">X</div>
-        <div class="box field">O</div>
-        <div class="box field">O</div>
-      </div>
-      <div>
-        <p>player 2</p>
-        <p>Symbol: O</p>
+      <div class="game">
+        <div>
+          <div>
+            <p>Player: </p>
+            <p class="player1Name"></p>
+          </div>
+          <div>
+            <p>Symbol: </p>
+            <p class="player1Symbol"></p>
+          </div>
+        </div>
+        <div class="tic-tac-toe-board board">
+          <div class="box box-field"></div>
+          <div class="box box-field"></div>
+          <div class="box box-field"></div>
+          <div class="box box-field"></div>
+          <div class="box box-field"></div>
+          <div class="box box-field"></div>
+          <div class="box box-field"></div>
+          <div class="box box-field"></div>
+          <div class="box box-field"></div>
+        </div>
+        <div>
+          <div>
+            <p>Player: </p>
+            <p class="player2Name"></p>
+          </div>
+          <div>
+            <p>Symbol: </p>
+            <p class="player2Symbol"></p>
+          </div>
+        </div>
       </div>
     </main>
     <div></div>

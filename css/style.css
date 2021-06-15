@@ -12,7 +12,21 @@ body {
   font-family: "Courier New", Courier, monospace;
 }
 
+main {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 /* Add correct CSS here for a grid overview */
+
+.game {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
 .tic-tac-toe-board {
   width: 400px;
@@ -35,4 +49,5 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
