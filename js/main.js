@@ -10,7 +10,7 @@ const players = [ ];
 const fields = document.querySelectorAll('.box');
 const resetButton = document.querySelector(".reset-btn");
 let currentPlayer = 0; // This is the index of the array of the currentplayer
-
+let amountOfPlayers = 0;
 //Create two players aligned with the Player class
 //const playerOne = ...
 //const playerTwo = ...
@@ -18,10 +18,34 @@ let currentPlayer = 0; // This is the index of the array of the currentplayer
 for (let i = 0; i < 1; i++){
     document.querySelector(".input-btn").addEventListener('click', (e) => {
         if(players.length < 2){
-            const newPlayer = new Player(document.getElementById("pname").value, document.getElementById("psymbol").value);
-            players.push(newPlayer);
+            let duplicatedSymbol = false;
+            console.log(duplicatedSymbol);
+            let inputName = document.getElementById("pname").value;
+            let inputSymbol = document.getElementById("psymbol").value;
             console.log(players.length);
-            changePlayerTurn();
+            if(players.length == 1){
+                if(players[0].symbol == inputSymbol){
+                    duplicatedSymbol = true;
+                    console.log(duplicatedSymbol);
+                }
+            }
+            if(!duplicatedSymbol){
+                const newPlayer = new Player(inputName, inputSymbol);
+                players.push(newPlayer);
+                console.log(players.length);
+                changePlayerTurn();
+                amountOfPlayers++;
+                console.log(amountOfPlayers);
+                if(amountOfPlayers == 1) {
+                    document.querySelector(".player1Name").textContent = inputName;
+                    document.querySelector(".player1Symbol").textContent = inputSymbol;
+                } else {
+                    document.querySelector(".player2Name").textContent = inputName;
+                    document.querySelector(".player2Symbol").textContent = inputSymbol;
+                }
+            } else {
+                alert("You can't have the same symbol as player 1!");
+            }
         } else {
             console.log("too many players");
         }
@@ -59,14 +83,18 @@ resetButton.addEventListener("click", resetGame);
 /* fix symbol not showing up*/
 function addSymbolToField(box) {
     let fieldContent = fields[box].textContent;
+    console.log("fields[box].textContent: " + fieldContent);
     if (fieldContent === players[0].symbol || fieldContent === players[1].symbol) {
         alert('This field can not be used');
     }
-    console.log(players);
+    console.log("players: " + players);
+    console.log("players[0].symbol: " + players[0].symbol)
+    console.log("players[1].symbol: " + players[1].symbol)
     if (currentPlayer == 0){
-        fieldContent = players[0].symbol;
+        fields[box].textContent = players[0].symbol;
+        console.log("currentplayer = 0");
     } else {
-        fieldContent = players[1].symbol;
+        fields[box].textContent = players[1].symbol;
     }
 }
 
@@ -85,12 +113,12 @@ function resetBoard() {
 
 function checkWinner() {
     if(fields[0].textContent == players[0].symbol && fields[1].textContent == players[0].symbol && fields[2].textContent == players[0].symbol) {
-        alert("Player: " + currentPlayer + " won!"); 
-        addPointsPlayerOne();
+        alert("Player: " + currentPlayer + 1 + " won!"); 
+        Player.addPointsPlayerOne()
         return true;
     }
     else if(fields[3].textContent == players[0].symbol && fields[4].textContent == players[0].symbol && fields[5].textContent == players[0].symbol) {
-        alert("Player: " + currentPlayer + " won!");
+        alert("Player: " + currentPlayer + 1 + " won!");
         addPointsPlayerOne()
         return true;
     }

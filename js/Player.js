@@ -5,10 +5,9 @@ export default class Player {
     this.points = 0;
   }
 
-  /**
-   * Assignment
-   * Add a function to add a point to the player total points
-   */
+  addPointsPlayerOne() {
+    
+  }
 
   /**
    * Assignment
