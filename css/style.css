@@ -1,6 +1,5 @@
 * {
   margin: 0;
-  padding: 10px;
 }
 
 html,
@@ -19,13 +18,29 @@ main {
   justify-content: center;
 }
 
+.padding {
+  padding: 10px;
+}
+
 /* Add correct CSS here for a grid overview */
+.head {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 .game {
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .tic-tac-toe-board {
@@ -50,4 +65,5 @@ main {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 10px;
 }

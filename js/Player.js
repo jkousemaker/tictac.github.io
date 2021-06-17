@@ -3,10 +3,13 @@ export default class Player {
     this.name = name;
     this.symbol = symbol;
     this.points = 0;
+    this.winCounter = 0;
   }
 
-  addPointsPlayerOne() {
-    
+  addPointsPlayer(reward) {
+    this.points += reward;
+    console.log(this.points); 
+    this.winCounter += 1;
   }
 
   /**

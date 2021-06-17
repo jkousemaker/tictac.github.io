@@ -13,22 +13,37 @@
       <span>ofwel boter kaas en eieren</span>
     </header>
     <main>
-      <div>
-        <label for="pname">Player Name:</label>
-        <input type="text" id="pname" name="pname"><br><br>
-        <label for="psymbol">Symbol:   </label>
-        <input type="text" id="psymbol" name="psymbol"><br><br>
-        <button class="input-btn">Submit</button>
+      <div class = "head">
+        <div class = "padding">
+          <label for="pname">Player Name:</label>
+          <input type="text" id="pname" name="pname"><br><br>
+          <label for="psymbol">Symbol:   </label>
+          <input type="text" id="psymbol" name="psymbol"><br><br>
+          <button class="input-btn">Submit</button>
+        </div>
+        <div class = "padding">
+          <p>Current Reward:</p>
+          <p class = "currentReward"></p>
+        </div>
       </div>
-      <div class="game">
-        <div>
-          <div>
-            <p>Player: </p>
+      
+      <section class="game padding">
+        <div class = "player1 padding">
+          <div class = "padding field">
+            <p class= "padding">Player: </p>
             <p class="player1Name"></p>
           </div>
-          <div>
-            <p>Symbol: </p>
-            <p class="player1Symbol"></p>
+          <div class = "padding field">
+            <p class = "padding ">Symbol: </p>
+            <p class="player1Symbol padding"></p>
+          </div>
+          <div class = "padding field">
+            <p class = "padding" >Balance: </p>
+            <p class="player1Balance padding"></p>
+          </div>
+          <div class = "padding field">
+            <p class = "padding" >Win Streak: </p>
+            <p class="player1Streak padding"></p>
           </div>
         </div>
         <div class="tic-tac-toe-board board">
@@ -42,17 +57,25 @@
           <div class="box box-field"></div>
           <div class="box box-field"></div>
         </div>
-        <div>
-          <div>
-            <p>Player: </p>
+        <div class = "player2 padding">
+          <div class = "padding field">
+            <p class= "padding">Player: </p>
             <p class="player2Name"></p>
           </div>
-          <div>
-            <p>Symbol: </p>
-            <p class="player2Symbol"></p>
+          <div class = "padding field">
+            <p class = "padding ">Symbol: </p>
+            <p class="player2Symbol padding"></p>
+          </div>
+          <div class = "padding field">
+            <p class = "padding" >Balance: </p>
+            <p class="player2Balance padding"></p>
+          </div>
+          <div class = "padding field">
+            <p class = "padding" >Win Streak: </p>
+            <p class="player2Streak padding"></p>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <div></div>
     <button class="reset-btn">reset</button>
